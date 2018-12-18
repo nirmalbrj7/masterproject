@@ -105,6 +105,16 @@ $after = \App\UserDetail::where('disaster_timeline','after')->get();
 
 <script>
 
+    function circleClick(e,head,body) {
+        console.log(e);
+
+
+        $('#modal-title').html(head);
+        $('#modal-body').html(body);
+
+        $('#myModalBottom').modal('show');
+    }
+
     var greenIcon = new L.Icon({
         iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -187,8 +197,8 @@ $after = \App\UserDetail::where('disaster_timeline','after')->get();
         var lon = before[i]['long'];
         var lat = before[i]['lat'];
 
-        var head = 'Device ID:' + after[i]['email']+"<br>"+'Name:'+before[i]['name'];
-        var body = "<br/><img src='"+before[i]['photo_1']+"'  width='350px'/><img src='"+before[i]['photo_2']+"'  width='350px'/><img src='"+before[i]['photo_3']+"' width='350px'/><img src='"+before[i]['photo_4']+"'  width='350px'/><img src='"+before[i]['photo_5']+"'  width='350px'/><img src='"+before[i]['photo_6']+"' width='350px'/>";
+        const head = 'Device ID:' + before[i]['email']+"<br>"+'Name:'+before[i]['name'];
+        const body = "<br/><img src='"+before[i]['photo_1']+"'  width='350px'/><img src='"+before[i]['photo_2']+"'  width='350px'/><img src='"+before[i]['photo_3']+"' width='350px'/><img src='"+before[i]['photo_4']+"'  width='350px'/><img src='"+before[i]['photo_5']+"'  width='350px'/><img src='"+before[i]['photo_6']+"' width='350px'/>";
         var customOptions =
             {
                 'maxWidth': '500',
@@ -196,10 +206,11 @@ $after = \App\UserDetail::where('disaster_timeline','after')->get();
                 'className' : 'custom'
             }
 
+
         /* var markerLocation = new L.LatLng(lat, lon);
          var marker = new L.Marker(markerLocation,{icon: greenIcon});*/
 
-        var marker = L.marker(L.latLng(lat, lon), { icon: greenIcon }).on("click", function(e) {
+        var marker = L.marker(L.latLng(lat, lon), {title:head, icon: greenIcon }).on("click", function(e) {
             circleClick(e, head, body);
         });
         // marker.bindPopup(popupText);
@@ -213,36 +224,36 @@ $after = \App\UserDetail::where('disaster_timeline','after')->get();
         var lon = after[i]['long'];
         var lat = after[i]['lat'];
 
-        var head = 'Device ID:' + after[i]['email']+"<br>"+'Name:'+before[i]['name'];
+        const heads = 'Device ID:' + after[i]['email']+"<br>"+'Name:'+after[i]['name'];
 
-        var body = "<br/><img src='"+before[i]['photo_1']+"'  width='350px'/><img src='"+before[i]['photo_2']+"'  width='350px'/><img src='"+before[i]['photo_3']+"' width='350px'/><img src='"+before[i]['photo_4']+"'  width='350px'/><img src='"+before[i]['photo_5']+"'  width='350px'/><img src='"+before[i]['photo_6']+"' width='350px'/>";
+
+        const bodys = "<br/><img src='"+after[i]['photo_1']+"'  width='350px'/><img src='"+after[i]['photo_2']+"'  width='350px'/><img src='"+after[i]['photo_3']+"' width='350px'/><img src='"+after[i]['photo_4']+"'  width='350px'/><img src='"+after[i]['photo_5']+"'  width='350px'/><img src='"+after[i]['photo_6']+"' width='350px'/>";
         //  var email =  before[i]['email'];
 
 
         /* var markerLocation = new L.LatLng(lat, lon);
          var marker = new L.Marker(markerLocation,{icon: greenIcon});*/
-        var myIcon = L.divIcon({ popupAnchor: [0, -30] });
 
-        var marker = L.marker(L.latLng(lat, lon), { icon: violetIcon }).on("click", function(e) {
-            circleClick(e, head, body);
+
+        var marker = L.marker(L.latLng(lat, lon), {title:heads, icon: violetIcon }).on("click", function(e) {
+            circleClick(e, heads, bodys);
+
         });
         //marker.bindPopup(customPopup,customOptions);
         markerList.push(marker);
 
+
     }
+    // console.log(markerList);
+
 
 
     markers.addLayers(markerList);
     map.addLayer(markers);
 
-    function circleClick(e,head,body) {
-        //console.log(customPopup);
 
-        $('#modal-title').html(head);
-        $('#modal-body').html(body);
 
-        $('#myModalBottom').modal('show');
-    }
+
 
 
 
