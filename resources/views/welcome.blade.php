@@ -197,7 +197,7 @@ $after = \App\UserDetail::where('disaster_timeline','after')->get();
         var lon = before[i]['long'];
         var lat = before[i]['lat'];
 
-        const head = 'Device ID:' + before[i]['email']+"<br>"+'Name:'+before[i]['name'];
+        const head = 'Name:' + before[i]['name']+"<br>"+'Email :'+before[i]['email']+"<br>"+'Mobile Number :'+before[i]['phone_no'];
         const body = "<br/><img src='"+before[i]['photo_1']+"'  width='350px'/><img src='"+before[i]['photo_2']+"'  width='350px'/><img src='"+before[i]['photo_3']+"' width='350px'/><img src='"+before[i]['photo_4']+"'  width='350px'/><img src='"+before[i]['photo_5']+"'  width='350px'/><img src='"+before[i]['photo_6']+"' width='350px'/>";
         var customOptions =
             {
@@ -224,7 +224,7 @@ $after = \App\UserDetail::where('disaster_timeline','after')->get();
         var lon = after[i]['long'];
         var lat = after[i]['lat'];
 
-        const heads = 'Device ID:' + after[i]['email']+"<br>"+'Name:'+after[i]['name'];
+        const heads = 'Name:' + before[i]['name']+"<br>"+'Email :'+before[i]['email']+"<br>"+'Mobile Number :'+before[i]['phone_no'];
 
 
         const bodys = "<br/><img src='"+after[i]['photo_1']+"'  width='350px'/><img src='"+after[i]['photo_2']+"'  width='350px'/><img src='"+after[i]['photo_3']+"' width='350px'/><img src='"+after[i]['photo_4']+"'  width='350px'/><img src='"+after[i]['photo_5']+"'  width='350px'/><img src='"+after[i]['photo_6']+"' width='350px'/>";

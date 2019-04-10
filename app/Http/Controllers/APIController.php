@@ -15,8 +15,15 @@ class APIController extends Controller
         $disaster_timeline = $request->disaster_timeline;
         $lat = $request->lat;
         $long = $request->long;
-        $desc = $request->desc;
-        $status = $request->status;
+        $status = 'active';
+
+
+        if ($request->has('desc') && $request->desc != "") {
+
+            $desc = $request->desc;
+        } else {
+            $desc = '';
+        }
 
         if ($request->has('photo_1') && $request->photo_1 != "") {
             $path = $request->file('photo_1')->store('uploads/design', 'public');
