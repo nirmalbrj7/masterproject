@@ -220,15 +220,15 @@ $after = \App\UserDetail::where('disaster_timeline','after')->get();
 
 
     for (var i=0; i<after.length; i++) {
-
+        console.log('i')
         var lon = after[i]['long'];
         var lat = after[i]['lat'];
 
-        const heads = 'Name:' + before[i]['name']+"<br>"+'Email :'+before[i]['email']+"<br>"+'Mobile Number :'+before[i]['phone_no'];
+        const heads = 'Name:' + after[i]['name']+"<br>"+'Email :'+after[i]['email']+"<br>"+'Mobile Number :'+after[i]['phone_no'];
 
 
         const bodys = "<br/><img src='"+after[i]['photo_1']+"'  width='350px'/><img src='"+after[i]['photo_2']+"'  width='350px'/><img src='"+after[i]['photo_3']+"' width='350px'/><img src='"+after[i]['photo_4']+"'  width='350px'/><img src='"+after[i]['photo_5']+"'  width='350px'/><img src='"+after[i]['photo_6']+"' width='350px'/>";
-        //  var email =  before[i]['email'];
+        //  var email =  after[i]['email'];
 
 
         /* var markerLocation = new L.LatLng(lat, lon);

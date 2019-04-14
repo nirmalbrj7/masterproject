@@ -89,4 +89,12 @@ class APIController extends Controller
 
 
     }
+
+    public function test(){
+        $response = array(
+            'status' => 'success',
+            'msg' => 'test Successfully',
+        );
+        return \Response::json($response);
+    }
 }
